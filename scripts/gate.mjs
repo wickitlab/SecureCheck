@@ -12,9 +12,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 const REPORTS = process.env.REPORTS || '/tmp';
-const failOn = (process.env.FAIL_ON || 'none').toLowerCase();
+const failOn = (process.env.FAIL_ON || 'none').trim().toLowerCase();
 
 const RANK = { none: 0, low: 1, medium: 2, high: 3, critical: 4 };
+
+if (!(failOn in RANK)) {
+  console.error(`Invalid FAIL_ON "${failOn}". Use one of: ${Object.keys(RANK).join(', ')}.`);
+  process.exit(1);
+}
 const buckets = { critical: 0, high: 0, medium: 0, low: 0 };
 
 function readJson(file) {
