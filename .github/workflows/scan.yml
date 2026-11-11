@@ -60,7 +60,7 @@ jobs:
       - name: Checkout SecureCheck
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
-          repository: w1ck3ds0d4/SecureCheck
+          repository: wickitlab/SecureCheck
           ref: ${{ steps.scref.outputs.ref }}
           path: .securecheck
           fetch-depth: 1
