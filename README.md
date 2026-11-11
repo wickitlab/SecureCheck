@@ -4,7 +4,7 @@ GitHub **composite action** (and reusable workflow) that runs a multi-scanner se
 
 ## Features
 
-- **Usable as a Marketplace action or a reusable workflow** - drop in a single `- uses: w1ck3ds0d4/SecureCheck@v1` step, or call the reusable workflow
+- **Usable as a Marketplace action or a reusable workflow** - drop in a single `- uses: wickitlab/SecureCheck@v1` step, or call the reusable workflow
 - **SARIF + GitHub code scanning** - Gitleaks, Semgrep and Trivy findings upload to the Security tab and appear as inline PR annotations
 - **Severity gate** - `fail-on` blocks merges at a chosen threshold (low/medium/high/critical); detected secrets always count as critical
 - **Centralised scanner stack** - scanners and rules live in one repo; each consumer repo contains a thin caller, so updates propagate without touching every project
@@ -52,7 +52,7 @@ jobs:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0     # full history for gitleaks + PR diff
-      - uses: w1ck3ds0d4/SecureCheck@v1   # pin @v1 for the stable line, @main for latest
+      - uses: wickitlab/SecureCheck@v1   # pin @v1 for the stable line, @main for latest
         with:
           fail-on: high
 ```
@@ -70,7 +70,7 @@ permissions:
 
 jobs:
   scan:
-    uses: w1ck3ds0d4/SecureCheck/.github/workflows/scan.yml@v1
+    uses: wickitlab/SecureCheck/.github/workflows/scan.yml@v1
     with:
       fail-on: high
     secrets:
@@ -169,7 +169,7 @@ The reusable-workflow inputs use snake_case (e.g. `node_version`), while the com
 ```yaml
 jobs:
   scan:
-    uses: w1ck3ds0d4/SecureCheck/.github/workflows/scan.yml@v1
+    uses: wickitlab/SecureCheck/.github/workflows/scan.yml@v1
     secrets:
       DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
     with:

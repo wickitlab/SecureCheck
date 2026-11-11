@@ -20,6 +20,6 @@ jobs:
         with:
           fetch-depth: 0      # full history for gitleaks + PR diff
 
-      - uses: w1ck3ds0d4/SecureCheck@main   # pin to a release tag for production
+      - uses: wickitlab/SecureCheck@main   # pin to a release tag for production
         with:
           fail-on: high       # block on high/critical; use 'none' to report only

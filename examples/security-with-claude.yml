@@ -20,7 +20,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: w1ck3ds0d4/SecureCheck@main   # pin to a release tag for production
+      - uses: wickitlab/SecureCheck@main   # pin to a release tag for production
         with:
           fail-on: high
           anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}

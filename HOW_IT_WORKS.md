@@ -16,7 +16,7 @@ You configure it once per consumer repo with a small caller workflow and a webho
 
 ## Key features
 
-- **One reusable workflow, many repos.** Update scanners and rules in `w1ck3ds0d4/SecureCheck` and every consumer picks up the change automatically.
+- **One reusable workflow, many repos.** Update scanners and rules in `wickitlab/SecureCheck` and every consumer picks up the change automatically.
 - **Three scanners covering different ground:**
   - `gitleaks` for hardcoded secrets in the working tree and history.
   - `Semgrep` (`auto` ruleset) for pattern-based static analysis.
@@ -51,7 +51,7 @@ permissions:
 
 jobs:
   scan:
-    uses: w1ck3ds0d4/SecureCheck/.github/workflows/scan.yml@v1
+    uses: wickitlab/SecureCheck/.github/workflows/scan.yml@v1
     secrets:
       DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -82,7 +82,7 @@ The Claude step only runs on pull requests and only when this secret is set. Pus
 ```yaml
 jobs:
   scan:
-    uses: w1ck3ds0d4/SecureCheck/.github/workflows/scan.yml@v1
+    uses: wickitlab/SecureCheck/.github/workflows/scan.yml@v1
     secrets:
       DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
     with:

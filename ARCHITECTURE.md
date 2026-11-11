@@ -41,7 +41,7 @@ Pull request only. Computes `git diff origin/<base>...HEAD`, truncates to 40 KB,
 
 ## Data flow
 
-1. Consumer repo's caller workflow (`.github/workflows/security.yml`) invokes `w1ck3ds0d4/SecureCheck/.github/workflows/scan.yml@v1` (or the composite action) with the two secrets mapped explicitly.
+1. Consumer repo's caller workflow (`.github/workflows/security.yml`) invokes `wickitlab/SecureCheck/.github/workflows/scan.yml@v1` (or the composite action) with the two secrets mapped explicitly.
 2. `scan.yml` checks out the consumer repo (`fetch-depth: 0`) and SecureCheck (`path: .securecheck`).
 3. Sets up Node and Python.
 4. Runs gitleaks, Semgrep, and Trivy. Each scanner writes JSON to `/tmp/<scanner>.json`. Counts are extracted with `jq` and exported as step outputs.

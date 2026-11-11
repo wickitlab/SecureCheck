@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   securecheck:
-    uses: w1ck3ds0d4/SecureCheck/.github/workflows/scan.yml@main   # pin to a tag for production
+    uses: wickitlab/SecureCheck/.github/workflows/scan.yml@main   # pin to a tag for production
     with:
       fail-on: high
     secrets: inherit

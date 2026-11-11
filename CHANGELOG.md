@@ -8,7 +8,7 @@ semantic versioning.
 
 ### Added
 - Composite action (`action.yml`) so SecureCheck can be used as
-  `- uses: w1ck3ds0d4/SecureCheck@<ref>` and listed on the GitHub Marketplace.
+  `- uses: wickitlab/SecureCheck@<ref>` and listed on the GitHub Marketplace.
 - SARIF output from Gitleaks, Semgrep and Trivy, uploaded to GitHub code
   scanning (Security tab plus inline PR annotations). Requires the calling job
   to grant `security-events: write`.
