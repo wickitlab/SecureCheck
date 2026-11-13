@@ -1,7 +1,7 @@
 // Ask Claude to review the PR diff for security issues with real exploit paths.
 // Emits a JSON array on stdout: [{severity,file,line,title,why}, ...]. Empty array = all clear.
 
-import { execSync } from 'node:child_process';
+import { execFileSync } from 'node:child_process';
 import Anthropic from '@anthropic-ai/sdk';
 
 const MODEL = 'claude-sonnet-4-6';
@@ -15,10 +15,15 @@ if (!ANTHROPIC_API_KEY) {
   process.exit(0);
 }
 
+if (!BASE_REF) {
+  console.log('[]');
+  process.exit(0);
+}
+
 let diff = '';
 try {
-  execSync(`git fetch --no-tags --depth=1 origin ${BASE_REF}`, { stdio: 'ignore' });
-  diff = execSync(`git diff origin/${BASE_REF}...HEAD`, { encoding: 'utf8' });
+  execFileSync('git', ['fetch', '--no-tags', '--depth=1', 'origin', BASE_REF], { stdio: 'ignore' });
+  diff = execFileSync('git', ['diff', `origin/${BASE_REF}...HEAD`], { encoding: 'utf8', maxBuffer: 64 * 1024 * 1024 });
 } catch (err) {
   console.error(`Failed to compute diff: ${err.message}`);
   console.log('[]');
